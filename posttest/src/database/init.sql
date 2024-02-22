@@ -26,7 +26,7 @@ CREATE TABLE user_ticket (
                              price DECIMAL NOT NULL,
                              transaction_type VARCHAR(4) CHECK (transaction_type IN ('BUY', 'SELL')),
                              created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
-                             updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW()
+                             updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
                              FOREIGN KEY (ticket_id) REFERENCES lottery(ticket_id),
                              FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
