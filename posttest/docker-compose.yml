@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  application:
+    image: amazoncorretto:17.0.9-alpine3.18
+    depends_on: [postgres]
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      DATABASE_USER: ${POSTGRES_USER}
+      DATABASE_PASS: ${POSTGRES_PASSWORD}
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8080:8888"
+    networks:
+      - local_network
+    command: ["./gradlew", "bootRun"]
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+volumes:
+  pgdata:
