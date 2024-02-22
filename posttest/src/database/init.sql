@@ -20,15 +20,15 @@ CREATE TABLE users (
 
 CREATE TABLE user_ticket (
                              transaction_id SERIAL PRIMARY KEY,
-                             date TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+                             datetime TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
                              ticket_id INT NOT NULL,
                              user_id VARCHAR(10) NOT NULL,
                              price DECIMAL NOT NULL,
                              transaction_type VARCHAR(4) CHECK (transaction_type IN ('BUY', 'SELL')),
-                             FOREIGN KEY (ticket_id) REFERENCES lottery(ticket_id),
-                             FOREIGN KEY (user_id) REFERENCES users(user_id),
                              created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
                              updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW()
+                             FOREIGN KEY (ticket_id) REFERENCES lottery(ticket_id),
+                             FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE INDEX idx_ticket_id ON user_ticket(ticket_id);
