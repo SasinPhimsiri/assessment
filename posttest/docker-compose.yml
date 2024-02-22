@@ -15,10 +15,11 @@ services:
       - .:/app
     working_dir: /app
     ports:
-      - "8080:8888"
+      - "8888:8080"
     networks:
       - local_network
     command: ["./gradlew", "bootRun"]
+
   postgres:
     image: postgres:latest
     restart: always
@@ -27,7 +28,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./src/database/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
 volumes:
