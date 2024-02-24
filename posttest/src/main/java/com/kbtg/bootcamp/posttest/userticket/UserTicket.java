@@ -13,7 +13,7 @@ public class UserTicket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")
-    private Long transactionId; // No setter for transactionId to maintain immutability
+    private Long transactionId;
 
     @Column(nullable = false)
     private LocalDateTime datetime;
@@ -88,7 +88,6 @@ public class UserTicket {
         return updatedAt;
     }
 
-    // Setters (excluding transactionId)
     public void setDatetime(LocalDateTime datetime) {
         this.datetime = datetime;
     }
@@ -117,4 +116,5 @@ public class UserTicket {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 }

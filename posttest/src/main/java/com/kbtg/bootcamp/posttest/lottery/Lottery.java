@@ -11,7 +11,7 @@ public class Lottery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ticket_id")
-    private Integer ticketId; // No setter for ticketId to maintain immutability
+    private Integer ticketId;
 
     @Column(name = "ticket_number", nullable = false, length = 6)
     private String ticket;
@@ -42,7 +42,6 @@ public class Lottery {
         this.updatedAt = LocalDateTime.now();
     }
 
-    // Getters
     public Integer getTicketId() {
         return ticketId;
     }
@@ -67,7 +66,6 @@ public class Lottery {
         return updatedAt;
     }
 
-    // Setters (excluding ticketId)
     public void setTicket(String ticket) {
         this.ticket = ticket;
     }
