@@ -8,6 +8,7 @@ CREATE TABLE lottery (
                          ticket_id SERIAL PRIMARY KEY,
                          ticket_number VARCHAR(6) NOT NULL,
                          price INTEGER NOT NULL,
+                         amount INTEGER NOT NULL,
                          created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
                          updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW()
 );
