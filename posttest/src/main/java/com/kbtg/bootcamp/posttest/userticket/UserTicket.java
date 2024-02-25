@@ -1,8 +1,6 @@
 package com.kbtg.bootcamp.posttest.userticket;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "user_ticket")
 public class UserTicket {
@@ -18,18 +16,30 @@ public class UserTicket {
     @Column(name = "user_id", nullable = false)
     private String userId;
 
+    @Column(name = "price", nullable = false)
+    private Integer price;
+
     @Column(name = "transaction_type", nullable = false, length = 4)
     private String transactionType;
 
-    public UserTicket(Integer transactionId, String ticketNumber, String userId, String transactionType) {
+    public UserTicket(Integer transactionId, String ticketNumber, String userId, Integer price, String transactionType) {
         this.transactionId = transactionId;
         this.ticketNumber = ticketNumber;
         this.userId = userId;
+        this.price = price;
         this.transactionType = transactionType;
     }
 
     public UserTicket() {
 
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public Integer getTransactionId() {

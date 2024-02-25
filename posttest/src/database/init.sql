@@ -21,6 +21,7 @@ CREATE TABLE user_ticket (
                              datetime TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
                              ticket_number VARCHAR(6) NOT NULL,
                              user_id VARCHAR(10) NOT NULL,
+                             price INTEGER NOT NULL,
                              transaction_type VARCHAR(4) CHECK (transaction_type IN ('BUY', 'SELL'))
 );
 

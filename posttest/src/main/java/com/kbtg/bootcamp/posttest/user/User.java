@@ -18,6 +18,10 @@ public class User {
         this.userId = userId;
     }
 
+    public User() {
+
+    }
+
     public String getUserId() {
         return userId;
     }
