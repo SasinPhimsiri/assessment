@@ -28,7 +28,7 @@ public class AdminController {
     public ResponseEntity<Object> createLottery(@Validated @RequestBody LotteryRequest request){
         Lottery lottery = lotteryService.createLottery(request);
         Map<String, String> responseBody = new HashMap<>();
-        responseBody.put("ticket", lottery.getTicket());
+        responseBody.put("ticket", lottery.getTicketNumber());
         return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
     }
 }

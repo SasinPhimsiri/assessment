@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/lotteries")
 public class LotteryController {
 
-    private LotteryService lotteryService;
+    private final LotteryService lotteryService;
 
     public LotteryController(LotteryService lotteryService) {
         this.lotteryService = lotteryService;
@@ -24,7 +24,7 @@ public class LotteryController {
     public Map<String, List<String>> getAllLotteryNumbers() {
         List<String> ticketNumbers = lotteryService.getAllLotteryNumbers()
                 .stream()
-                .map(Lottery::getTicket)
+                .map(Lottery::getTicketNumber)
                 .collect(Collectors.toList());
 
         Map<String, List<String>> response = new HashMap<>();

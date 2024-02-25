@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 
 @ControllerAdvice
@@ -29,6 +32,13 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler({TicketNotFoundException.class})
+    public ResponseEntity<ApiExceptionResponse> handleNotFoundException(TicketNotFoundException ticketNotFoundException) {
+        ApiExceptionResponse errorResponse = new ApiExceptionResponse(ticketNotFoundException.getMessage(),
+                HttpStatus.BAD_REQUEST,
+                ZonedDateTime.now());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
 
 }
 

@@ -2,8 +2,6 @@ package com.kbtg.bootcamp.posttest.lottery;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "lottery")
 public class Lottery {
@@ -14,7 +12,7 @@ public class Lottery {
     private Integer ticketId;
 
     @Column(name = "ticket_number", nullable = false, length = 6)
-    private String ticket;
+    private String ticketNumber;
 
     @Column(name = "price", nullable = false)
     private Integer price;
@@ -22,68 +20,46 @@ public class Lottery {
     @Column(name = "amount", nullable = false)
     private Integer amount;
 
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
-
-    // Constructors
-    public Lottery() {
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
-    }
-
-    public Lottery(String ticket, Integer price, Integer amount) {
-        this.ticket = ticket;
+    public Lottery(Integer ticketId, String ticketNumber, Integer price, Integer amount) {
+        this.ticketId = ticketId;
+        this.ticketNumber = ticketNumber;
         this.price = price;
         this.amount = amount;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
+    }
+
+    public Lottery() {
+
     }
 
     public Integer getTicketId() {
         return ticketId;
     }
 
-    public String getTicket() {
-        return ticket;
+    public void setTicketId(Integer ticketId) {
+        this.ticketId = ticketId;
+    }
+
+    public String getTicketNumber() {
+        return ticketNumber;
+    }
+
+    public void setTicketNumber(String ticketNumber) {
+        this.ticketNumber = ticketNumber;
     }
 
     public Integer getPrice() {
         return price;
     }
 
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setTicket(String ticket) {
-        this.ticket = ticket;
-    }
-
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Integer getAmount() {
+        return amount;
     }
 
     public void setAmount(Integer amount) {
         this.amount = amount;
     }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
 }
