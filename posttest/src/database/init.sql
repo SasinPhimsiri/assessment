@@ -12,8 +12,10 @@ CREATE TABLE lottery (
 );
 
 CREATE TABLE users (
-                       user_id VARCHAR(10) NOT NULL PRIMARY KEY
-
+                       user_id VARCHAR(10) NOT NULL PRIMARY KEY,
+                        ticket_number VARCHAR(6) NOT NULL,
+                       price INTEGER NOT NULL,
+                       datetime TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW()
 );
 
 CREATE TABLE user_ticket (

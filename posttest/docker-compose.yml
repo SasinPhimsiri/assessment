@@ -20,7 +20,7 @@ services:
       - "8888:8080"
     networks:
       - local_network
-    command: ["./gradlew", "bootRun"]
+    command: [ "./gradlew", "clean", "bootRun" ]
 
   postgres:
     image: postgres:latest

@@ -30,9 +30,14 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/lotteries")
-    public ResponseEntity<Map<String, Object>> getLotteries(@PathVariable("userId") String userId) {
-        Map<String, Object> userLotteriesInfo = lotteryService.getUserLotteriesInfo(userId);
+    public ResponseEntity<Map<String, Object>> getPurchasedLotteries(@PathVariable("userId") String userId) {
+        Map<String, Object> userLotteriesInfo = lotteryService.getUserLotteriesInfo(userId, "BUY");
         return new ResponseEntity<>(userLotteriesInfo, HttpStatus.OK);
     }
 
+    @DeleteMapping("/{userId}/lotteries/{ticketId}")
+    public ResponseEntity<Map<String, String>> sellLottery(@PathVariable("userId") String userId, @PathVariable("ticketId") String ticketId) {
+        String ticketNumber = lotteryService.sellLotteryTicket(userId, ticketId);
+        return new ResponseEntity<>(Map.of("ticket", ticketNumber), HttpStatus.OK);
+    }
 }
